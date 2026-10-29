@@ -192,6 +192,7 @@ function App() {
     [offlineReady, setOfflineReady] = useState(false),
     [update, setUpdate] = useState<ServiceWorker>(),
     [query, setQuery] = useState(""),
+    [categoryFilter, setCategoryFilter] = useState(""),
     [showDeleted, setShowDeleted] = useState(false),
     [visibleCount, setVisibleCount] = useState(100),
     [mode, setMode] = useState<"minimum" | "hub">("minimum"),
@@ -348,6 +349,7 @@ function App() {
     setTab(next);
     setNotice("");
     setQuery("");
+    setCategoryFilter("");
     setVisibleCount(100);
     window.scrollTo(0, 0);
   }
@@ -443,6 +445,7 @@ function App() {
     group?.expenses.filter(
       (e) =>
         (showDeleted || !e.deleted) &&
+        (!categoryFilter || e.category === categoryFilter) &&
         [e.title, e.note, ...e.payers.map((p) => name(p.memberId))]
           .join(" ")
           .toLowerCase()
@@ -745,10 +748,28 @@ function App() {
                         go("expenses");
                       }}
                     >
-                      <div className={"group-symbol tone-" + (i % 3)}>
-                        {g.archived ? "□" : "↗"}
+                      <div className="group-card-top">
+                        <div className={"group-symbol tone-" + (i % 3)}>
+                          {g.archived ? "□" : "↗"}
+                        </div>
+                        <span className="currency-badge">{g.currency}</span>
                       </div>
                       <span className="group-name">{g.name}</span>
+                      <div className="card-avatars" aria-hidden="true">
+                        {g.members.slice(0, 3).map((m, mi) => (
+                          <span
+                            key={m.id}
+                            className={"avatar-sm tone-" + (mi % 3)}
+                          >
+                            {m.name.slice(0, 1)}
+                          </span>
+                        ))}
+                        {g.members.length > 3 && (
+                          <span className="avatar-sm more">
+                            +{g.members.length - 3}
+                          </span>
+                        )}
+                      </div>
                       <span className="muted">
                         {g.members.length} {t("位成員", "members")} ·{" "}
                         {g.expenses.filter((e) => !e.deleted).length}{" "}
@@ -887,6 +908,45 @@ function App() {
                       />
                       {t("含已刪除", "Show deleted")}
                     </label>
+                  </div>
+                  <div
+                    className="category-chips-bar"
+                    role="group"
+                    aria-label={t("類別快選", "Category filter")}
+                  >
+                    <button
+                      type="button"
+                      className={
+                        "category-chip " + (!categoryFilter ? "active" : "")
+                      }
+                      onClick={() => setCategoryFilter("")}
+                    >
+                      {t("全部", "All")}
+                      <span className="chip-count">{active.length}</span>
+                    </button>
+                    {categories.map((c) => {
+                      const count = active.filter(
+                        (e) => e.category === c,
+                      ).length;
+                      return (
+                        <button
+                          key={c}
+                          type="button"
+                          className={
+                            "category-chip " +
+                            (categoryFilter === c ? "active" : "")
+                          }
+                          onClick={() =>
+                            setCategoryFilter(categoryFilter === c ? "" : c)
+                          }
+                        >
+                          {c.split(en ? " " : " ")[en ? 1 : 0]}
+                          {count > 0 && (
+                            <span className="chip-count">{count}</span>
+                          )}
+                        </button>
+                      );
+                    })}
                   </div>
                   <div className="expense-list">
                     {filteredExpenses
