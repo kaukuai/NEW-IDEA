@@ -57,7 +57,7 @@ ZIP SHA256：`f46f4c66e8175296534f25e839cc6729102f8fcb474e8bbd70815bd38222e96d`�
 
 ## 尚未驗證／未執行
 
-Safari／iOS安裝與儲存、Android真機、LINE WebView、真實螢幕閱讀器、WebShare實際LINE接收、正式HTTPS平台／網域、公開安全測試、真人任務與付費價值。沒有原生xlsx（Excel相容CSV）、雲端同步、金流或銀行驗證。CI定義已寫，本機檢查通過；GitHub執行結果需待推送後另查。
+Safari／iOS安裝與儲存、Android真機、LINE WebView、真實螢幕閱讀器、WebShare實際LINE接收、正式HTTPS平台／網域、公開安全測試、真人任務與付費價值。沒有原生xlsx（Excel相容CSV）、雲端同步、金流或銀行驗證。公開初始提交424eab5的GitHub Actions run 40830374278已實際completed/success（型別、29項測試、正式建置）。後續提交仍以該次Actions結果為準。
 
 環境安裝／啟動草稿已由工具確認saved、requires_publish；沒有發布環境快照、應用或驗證新任務還原。所有真實成本／商業與平台條款仍需正式發布時確認。
 

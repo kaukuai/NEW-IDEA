@@ -4,7 +4,7 @@
 
 ## CURRENT STATE
 
-合帳 Fold 1.0.0：離線優先的多人分帳靜態PWA。GitHub目標為 `kaukuai/NEW-IDEA` 的 `main`。使用者已授權更新此儲存庫；這不包含正式部署網站、付款、真人聯絡或額外私人資料的授權。
+合帳 Fold 1.0.0：離線優先的多人分帳靜態PWA。已更新GitHub `kaukuai/NEW-IDEA` 的 `main`，初始公開提交為 `424eab55995cd3403d32608e2044f5b409795a9a`。使用者已授權更新此儲存庫；這不包含正式部署網站、付款、真人聯絡或額外私人資料的授權。
 
 公開版本只包含合帳目前程式與文件。公開範例、測試及主需求均採化名；原始需求中的姓名、早期實驗與私人開發紀錄僅保存在本機歷史及備份，不合併到公開main。不要推送本機work分支、所有分支或私人bundle。
 
@@ -15,7 +15,8 @@
 - 29項Vitest通過，含780組property、2～100人、10,000費用及IndexedDB交易。
 - 14組Chromium工作流、核心9次無障礙自動掃描未回報違規；另6項純靜態子路徑部署檢查、指南1次掃描通過。
 - 11人案例43,813元、每人3,983元；DP與2046個真子集枚舉求證最少10筆。
-- TypeScript、正式build、凍結安裝及包含授權通知的部署ZIP已驗證。公開準備只有化名與文件修改，會重跑型別／build／unit再推送。
+- TypeScript、正式build、凍結安裝及包含授權通知的部署ZIP已驗證。公開準備只有化名與文件修改，已重跑型別／build／29項測試通過。
+- 初始公開提交已核對遠端SHA一致，GitHub Actions run `40830374278` completed/success；最後紀錄更新請以最新main為準。
 - GitHub同步狀態須以 `git rev-parse HEAD` 和 `git ls-remote origin refs/heads/main` 相同確認，不能只看本機commit。
 
 ## OPEN ISSUES
@@ -28,7 +29,7 @@
 
 ## NEXT ACTION
 
-完成GitHub同步後，以實際遠端SHA與GitHub Actions結果確認交付。下一階段優先真機及替代工具任務比較，不擴建雲端／金流。正式部署需使用者對應授權。
+GitHub程式更新已完成；下一階段優先真機及替代工具任務比較，不擴建雲端／金流。正式部署需使用者對應授權。
 
 ## RESUME INSTRUCTIONS
 

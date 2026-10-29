@@ -4,13 +4,13 @@
 
 ## CURRENT STATE
 
-可建置的合帳Fold1.0.0已完成，使用者要求更新至 `kaukuai/NEW-IDEA`。遠端查核為公開空儲存庫，預設main。因此公開Git歷史將從合帳乾淨初始提交開始；私人本機開發分支及原需求備份不推送。公開文件、測試與程式示範皆使用化名。
+可建置的合帳Fold1.0.0已完成，使用者要求更新至 `kaukuai/NEW-IDEA`。遠端查核為公開空儲存庫，預設main。因此公開Git歷史已從合帳乾淨初始提交開始；私人本機開發分支及原需求備份不推送。公開文件、測試與程式示範皆使用化名。
 
 ## VERIFIED RESULTS
 
 29個Vitest（780組固定種子property）、14組Chromium工作流、6項全新目錄的純靜態部署驗證完成。11人案例最少10筆已求證。完整測試與界限在docs/TEST_REPORT.md。
 
-公開準備未修改財務演算法或產品流程；化名與文件調整後再跑npm test，並以遠端main的SHA核對實際推送。GitHub Actions定義只測試／建置，不部署。
+公開準備未修改財務演算法或產品流程；化名與文件調整後已跑npm test，29項通過。初始公開提交 `424eab55995cd3403d32608e2044f5b409795a9a` 已推送且遠端SHA核對一致。GitHub Actions定義只測試／建置，不部署；初始公開提交的run `40830374278` 已 completed/success。此後文件更新仍以最新遠端SHA／Actions為準。
 
 ## OPEN ISSUES
 
