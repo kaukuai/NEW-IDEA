@@ -1,0 +1,6 @@
+{
+  "name": "合帳 Fold · 一起花，各自清楚",
+  "description": "合帳 Fold：免登入、無廣告、在裝置上完成多人分帳。精確結算、離線帳本、LINE 文字與完整備份。",
+  "permissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -4,10 +4,11 @@
   "private": true,
   "type": "module",
   "engines": {
-    "node": ">=24"
+    "node": ">=22"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host 0.0.0.0 --port 3000",
+    "prestart": "npm run build",
     "start": "node server.mjs",
     "check": "tsc --noEmit",
     "test": "npm run build && vitest run",
@@ -24,12 +25,12 @@
     "fake-indexeddb": "6.2.6",
     "fast-check": "4.10.2",
     "prettier": "3.6.2",
-    "typescript": "5.9.3",
-    "vite": "8.3.5",
     "vitest": "5.0.5"
   },
   "dependencies": {
     "react": "19.3.1",
-    "react-dom": "19.3.1"
+    "react-dom": "19.3.1",
+    "typescript": "5.9.3",
+    "vite": "8.3.5"
   }
 }

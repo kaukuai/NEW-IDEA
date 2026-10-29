@@ -15,7 +15,7 @@ export function createServer() {
   return http.createServer(async (req, res) => {
     res.setHeader(
       "Content-Security-Policy",
-      "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data: blob:; connect-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'none'",
+      "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'",
     );
     res.setHeader("X-Content-Type-Options", "nosniff");
     res.setHeader("Referrer-Policy", "no-referrer");
@@ -73,10 +73,10 @@ if (
   pathToFileURL(process.argv[1]).href === import.meta.url
 ) {
   const s = createServer();
-  s.listen(
-    Number(process.env.PORT || 3000),
-    process.env.HOST || "127.0.0.1",
-    () => console.log(`Fold static verification server: ${s.address().port}`),
+  const port = Number(process.env.PORT || 3000);
+  const host = process.env.HOST || "0.0.0.0";
+  s.listen(port, host, () =>
+    console.log(`Fold server listening on http://${host}:${port}`),
   );
   for (const sig of ["SIGINT", "SIGTERM"])
     process.on(sig, () => s.close(() => process.exit(0)));

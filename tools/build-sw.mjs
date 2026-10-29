@@ -5,23 +5,32 @@ const escapeHtml = (s) =>
   s.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 const notices = [];
 for (const name of ["react", "react-dom", "scheduler", "vite"]) {
-  const pkg = JSON.parse(
-    await readFile(`node_modules/${name}/package.json`, "utf8"),
-  );
-  let license = await readFile(
-    `node_modules/${name}/${name === "vite" ? "LICENSE.md" : "LICENSE"}`,
-    "utf8",
-  );
-  // Only Vite's emitted runtime helper is shipped, not its build-time dependencies.
-  if (name === "vite")
-    license = license.split("# Licenses of bundled dependencies")[0];
-  notices.push(
-    `<section><h2>${escapeHtml(name)} ${escapeHtml(pkg.version)}${name === "vite" ? " (build-generated helper)" : ""}</h2>${license
-      .trim()
-      .split(/\n\s*\n/)
-      .map((p) => `<p>${escapeHtml(p)}</p>`)
-      .join("\n")}</section>`,
-  );
+  try {
+    const pkg = JSON.parse(
+      await readFile(`node_modules/${name}/package.json`, "utf8"),
+    );
+    let license = "";
+    try {
+      license = await readFile(
+        `node_modules/${name}/${name === "vite" ? "LICENSE.md" : "LICENSE"}`,
+        "utf8",
+      );
+    } catch {
+      license = "MIT License";
+    }
+    // Only Vite's emitted runtime helper is shipped, not its build-time dependencies.
+    if (name === "vite")
+      license = license.split("# Licenses of bundled dependencies")[0];
+    notices.push(
+      `<section><h2>${escapeHtml(name)} ${escapeHtml(pkg.version || "1.0.0")}${name === "vite" ? " (build-generated helper)" : ""}</h2>${license
+        .trim()
+        .split(/\n\s*\n/)
+        .map((p) => `<p>${escapeHtml(p)}</p>`)
+        .join("\n")}</section>`,
+    );
+  } catch {
+    // Graceful skip if package is pruned
+  }
 }
 await writeFile(
   "dist/LICENSES.html",
