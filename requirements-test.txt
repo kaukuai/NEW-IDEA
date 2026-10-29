@@ -1,0 +1,2 @@
+# Browser tests only. Chromium is supplied by the cloud image.
+playwright==1.62.0

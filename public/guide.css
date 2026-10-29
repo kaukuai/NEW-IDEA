@@ -1,0 +1,136 @@
+:root {
+  color-scheme: light;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: #f8f9f6;
+  color: #243b30;
+  font:
+    16px/1.9 system-ui,
+    -apple-system,
+    sans-serif;
+}
+header,
+main,
+footer {
+  max-width: 900px;
+  margin: auto;
+  padding: 25px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #d8e0d4;
+}
+.brand {
+  font-size: 23px;
+  font-weight: 700;
+  text-decoration: none;
+  color: #215b4b;
+}
+.button {
+  display: inline-block;
+  padding: 9px 19px;
+  border: 1px solid #b5c2b3;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #215b4b;
+  font-size: 14px;
+}
+.primary {
+  background: #215b4b;
+  color: #fff;
+  border-color: #215b4b;
+}
+h1 {
+  font-size: 64px;
+  line-height: 1.4;
+  letter-spacing: -2px;
+  margin: 20px 0;
+}
+h2 {
+  font-size: 25px;
+  line-height: 1.6;
+}
+main {
+  padding-top: 55px;
+}
+.lead {
+  max-width: 620px;
+  font-size: 20px;
+  color: #526255;
+}
+.eyebrow {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #526255;
+}
+section {
+  padding: 35px 0;
+  border-bottom: 1px solid #d8e0d4;
+}
+section p {
+  color: #526255;
+}
+.cta {
+  text-align: center;
+  border: 0;
+}
+details {
+  background: #fff;
+  border: 1px solid #d8e0d4;
+  border-radius: 8px;
+  padding: 15px 20px;
+  margin: 12px 0;
+}
+summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+footer {
+  font-size: 12px;
+  color: #526255;
+  border-top: 1px solid #d8e0d4;
+}
+a:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #4882b6;
+  outline-offset: 4px;
+}
+@media (max-width: 600px) {
+  body {
+    font-size: 15px;
+  }
+  header,
+  main,
+  footer {
+    padding: 22px;
+  }
+  .brand {
+    font-size: 20px;
+  }
+  .button {
+    font-size: 12px;
+    padding: 9px 13px;
+  }
+  h1 {
+    font-size: 43px;
+  }
+  .lead {
+    font-size: 17px;
+  }
+  h2 {
+    font-size: 22px;
+  }
+  main {
+    padding-top: 40px;
+  }
+  section {
+    padding: 25px 0;
+  }
+}
